@@ -1,2 +1,1 @@
-# jquery-many-page
-基于jquery的多页应用模版
+### 基于jquery的多页应用模版

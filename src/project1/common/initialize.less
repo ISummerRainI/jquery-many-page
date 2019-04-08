@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-family: 'PingFangSC-Semibold';
+  // background-color: #d31947
+  // background-color: #000;
+}
+body {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+button {
+  border: none;
+}
+.no-scroll {
+  overflow: hidden !important;
+}
+.oneline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.align-center {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.setPaddingAndMargin(@length) {
+  .mt@{length} { margin-top: @length + 1px - 1px; }
+  .ml@{length} { margin-left: @length + 1px - 1px; }
+  .mr@{length} { margin-right: @length + 1px - 1px; }
+  .mb@{length} { margin-bottom: @length + 1px - 1px; }
+  .m@{length} { margin: @length + 1px - 1px; }
+  .pt@{length} { padding-top: @length + 1px - 1px; }
+  .pl@{length} { padding-left: @length + 1px - 1px; }
+  .pr@{length} { padding-right: @length + 1px - 1px; }
+  .pb@{length} { padding-bottom: @length + 1px - 1px; }
+  .p@{length} { padding: @length + 1px - 1px; }
+}
+@pbList: 5, 10, 20;
+.loop(@i) when ( @i < length(@pbList) + 1 ) {
+  .setPaddingAndMargin(extract(@pbList, @i));
+  .loop(@i+1);
+}
+.loop(1);
+// Toast样式
+.toast {
+  .align-center();
+  text-align: center;
+  display: none;
+  font-size: 12px;
+  line-height: 24px;
+  padding: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  z-index: 9999;
+}
+// 蒙层样式
+.mask {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+// alert样式
+.alert-modal {
+  .align-center();
+  display: none;
+  width: 296px;
+  border-radius: 19px;
+  background: #fff;
+  z-index: 9998;
+  .title {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    padding: 0 24px;
+  }
+  .content {
+    width: 100%;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 32px 0;
+    padding: 0 16px;
+  }
+  .footer {
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 18px;
+    color: #0072ff;
+    border-top: solid 1Px #e1e1e1;
+  }
+}
